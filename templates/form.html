@@ -21,6 +21,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             backdrop-filter: blur(5px);
         }
 
@@ -83,6 +84,16 @@
                 transform: scale(1);
             }
         }
+
+        /* Footer */
+        .footer {
+            margin-top: 25px;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            opacity: 0.8;
+            animation: fadeIn 2s ease-in-out;
+        }
     </style>
 </head>
 
@@ -134,6 +145,11 @@
             <button class="btn-custom" type="submit">Check Eligibility</button>
 
         </form>
+    </div>
+
+    <!-- Copyright Footer -->
+    <div class="footer">
+        © 2025 <strong>Manoj C. Narware</strong>. All Rights Reserved.
     </div>
 
 </body>
