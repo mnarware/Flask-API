@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Loan Result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .result-card {
+            width: 600px;
+            border-radius: 20px;
+            padding: 30px;
+            background: #fff;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            font-weight: 700;
+            color: #0d47a1;
+        }
+
+        dt {
+            font-weight: 600;
+        }
+
+        .approved {
+            color: #2e7d32;
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+
+        .rejected {
+            color: #c62828;
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+
+        .back-btn {
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="result-card">
+        <h2 class="title text-center">Loan Application Result</h2>
+        <hr>
+
+        <dl class="row">
+            <dt class="col-sm-6">Applicant Income</dt>
+            <dd class="col-sm-6">{{ data.ApplicantIncome }}</dd>
+
+            <dt class="col-sm-6">Credit History</dt>
+            <dd class="col-sm-6">{{ data.CreditHistory }}</dd>
+
+            <dt class="col-sm-6">Gender (1 = Male, 0 = Female)</dt>
+            <dd class="col-sm-6">{{ data.Gender }}</dd>
+
+            <dt class="col-sm-6">Loan Amount</dt>
+            <dd class="col-sm-6">{{ data.LoanAmount }}</dd>
+
+            <dt class="col-sm-6">Married (1 = Yes, 0 = No)</dt>
+            <dd class="col-sm-6">{{ data.Married }}</dd>
+        </dl>
+
+        <hr>
+
+        <!-- Prediction Output -->
+        {% if data.pred == "Approved" %}
+        <h3 class="approved text-center">✔ Loan Approved</h3>
+        {% else %}
+        <h3 class="rejected text-center">✘ Loan Rejected</h3>
+        {% endif %}
+
+        <div class="text-center back-btn">
+            <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg">Back to Form</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
