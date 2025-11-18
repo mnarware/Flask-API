@@ -1,5 +1,6 @@
 from flask import Flask,request,render_template,redirect,url_for
 import pickle
+import pandas as pd
 
 app=Flask(__name__)
 with open("classifier.pkl","rb") as f:
@@ -28,8 +29,14 @@ def predict():
         Married=0
     else:
         Married=1
-    input_data=[[ApplicantIncome,CreditHistry,Gender,LoanAmount,Married]]
-    res=model.predict(input_data)
+    input_data=[ApplicantIncome,CreditHistry,Gender,LoanAmount,Married]
+    input_data=
+    res=model.predict([input_data])
+
+    print("Prediction :", res[0])
+    print("Data :", input_data)
+    
+
     if res==1:
         pred="Approved"
     else:
@@ -40,7 +47,9 @@ def predict():
         "CreditHistry": CreditHistry,
         "Gender": Gender,
         "LoanAmount": LoanAmount,
-        "Married":Married
+        "Married":Married,
+        "pred":pred
+
     }
     return render_template("result.html", data=submitted)
 if __name__=="__main__":
