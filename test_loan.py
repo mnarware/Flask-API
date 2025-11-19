@@ -1,6 +1,5 @@
 import pytest
 from loan import app
-from hello import app
 
 @pytest.fixture
 def client():
@@ -12,11 +11,11 @@ def test_home(client):
 
 def test_predict(client):
     data={
-        "ApplicantIncome": 100000,
-        "CreditHistory": 1,
         "Gender": "Male",
+        "Married": "No",
+        "ApplicantIncome": 10000,
         "LoanAmount": 1200,
-        "Married": "No"
+        "CreditHistory": 1
         }
     res=client.post('/predict',json=data)
     assert res.status_code ==200
