@@ -26,6 +26,7 @@ jobs:
       - name: Test with pytest
         run: pytest
   job2:
+    needs: job1
     runs-on: ubuntu-latest
     environment: production
 
